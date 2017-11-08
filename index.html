@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Add/Remove Js</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="assets/css/font.css" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="container">
+
+    <div id="addContainer">
+      <div class="well addContent">
+        <p> This is paragraph 1. Click add button to add more content. </p> 
+      </div>
+      <div class="btnContent pull-right">
+        <input type="button"  value="Add" class="addBtn btn btn-primary btn-sm  MorecntBtn" onclick="addCont()">
+        <a class="removeBtn btn btn-primary btn-sm  MorecntBtn" onclick="removeCont()" style="display: none;">Remove  </a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script type="text/javascript">
+    var addBtn = document.getElementsByClassName('addBtn');
+    var removeBtn = document.getElementsByClassName('removeBtn');
+    var i=1;
+
+    function addCont(){
+      i = i+1;
+
+      $("#addContainer").append("<div class='well addContent'>  <p> This is paragraph " + i +". Click add button to add more content.  And remove button to remove the content. </p> </div><div class='btnContent pull-right'>  <input type='button'  value='Add' class='addBtn btn btn-primary btn-sm  MorecntBtn' onclick='addCont()'>  <a class='removeBtn btn btn-primary btn-sm  MorecntBtn' onclick='removeCont()' style=''>Remove  </a></div>"); 
+      var length = addBtn.length;
+      if(length>1){
+        for (var j=1 ; j< length ; j++){
+          addBtn[j-1].style.display="none";
+          removeBtn[j-1].style.display="none";
+        }
+      }
+
+    }
+
+    
+
+    var addContent = document.getElementsByClassName('addContent');
+
+    function removeCont(){
+      i = i-1;
+        var length = addContent.length;
+        var blength = removeBtn.length;
+
+        if(length>1){
+            for (var j=length ; j> length-1 ; j--){
+                addContent[j-1].style.display="none";
+                $(addContent[j-1]).remove();
+            }
+        }
+
+        if( length==2){
+          for (var j=blength ; j> blength-1 ; j--){
+            removeBtn[j-1].style.display="none";
+          }
+        }
+
+    }
+
+  </script>
+</body>
+</html>
